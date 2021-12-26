@@ -14,8 +14,9 @@ class HeadlinesViewModel {
     public let articles: PublishSubject<[Article]> = PublishSubject()
     public let error: PublishSubject<NetworkError> = PublishSubject()
 
-    public func requestData() {
-        NetworkManager.shared.topHeadlines { result in
+    public func requestData(with sourceId: String) {
+        let parameters = ["sources": sourceId]
+        NetworkManager.shared.topHeadlines(with: parameters) { result in
             switch result {
             case .success(let response):
                 self.articles.onNext(response.articles)

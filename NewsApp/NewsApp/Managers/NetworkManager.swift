@@ -93,8 +93,8 @@ public class NetworkManager {
         }
     }
 
-    func topHeadlines(completion: @escaping (Result<TopHeadlinesResponse, NetworkError>) -> Void) {
-        request(of: TopHeadlinesResponse.self, forPath: topHeadlinesPath, method: .get, showLoadingView: true) { response in
+    func topHeadlines(with parameters: Parameters, completion: @escaping (Result<TopHeadlinesResponse, NetworkError>) -> Void) {
+        request(of: TopHeadlinesResponse.self, forPath: topHeadlinesPath, method: .get, parameters: parameters, showLoadingView: true) { response in
             if let response = response as? TopHeadlinesResponse {
                 completion(.success(response))
             } else {

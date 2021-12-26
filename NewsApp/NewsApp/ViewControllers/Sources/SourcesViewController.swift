@@ -101,6 +101,23 @@ class SourcesViewController: BaseViewController {
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)
+
+        // Categories CollectionView Selections
+        tableView
+            .rx
+            .modelSelected(Source.self)
+            .subscribe(onNext: { [unowned self] model in
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                if let headlinesViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesViewController")
+                    as? HeadlinesViewController {
+                    headlinesViewController.source = model
+                    self.navigationController?.pushViewController(headlinesViewController, animated: true)
+                }
+
+                if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+                    self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
+                }
+            }).disposed(by: disposeBag)
     }
 
 }

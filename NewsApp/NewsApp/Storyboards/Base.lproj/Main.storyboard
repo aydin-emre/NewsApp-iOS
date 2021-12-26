@@ -127,28 +127,68 @@
                     <connections>
                         <outlet property="collectionView" destination="6iu-E5-R2a" id="Zlc-0g-mpj"/>
                         <outlet property="tableView" destination="LIW-ij-Bx1" id="iL8-1S-UYJ"/>
-                        <segue destination="sZX-DW-wzW" kind="show" id="CGh-en-J5m"/>
+                        <segue destination="sZX-DW-wzW" kind="show" identifier="segueHeadlinesViewController" id="CGh-en-J5m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="88.392857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Headlines View Controller-->
         <scene sceneID="aFa-Ht-mXg">
             <objects>
-                <viewController id="sZX-DW-wzW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeadlinesViewController" id="sZX-DW-wzW" customClass="HeadlinesViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="31l-Dk-ITW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="d4g-aU-C0p">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeadlinesTableViewCell" rowHeight="300" id="aNd-a2-Fzt" customClass="HeadlinesTableViewCell" customModule="NewsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aNd-a2-Fzt" id="Q78-pj-Tnt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCQ-aj-7xf" customClass="NewsView" customModule="NewsApp" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="11" width="374" height="278"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hCQ-aj-7xf" firstAttribute="top" secondItem="Q78-pj-Tnt" secondAttribute="topMargin" id="BNk-cL-px6"/>
+                                                <constraint firstItem="hCQ-aj-7xf" firstAttribute="bottom" secondItem="Q78-pj-Tnt" secondAttribute="bottomMargin" id="IRY-rM-5hU"/>
+                                                <constraint firstItem="hCQ-aj-7xf" firstAttribute="trailing" secondItem="Q78-pj-Tnt" secondAttribute="trailingMargin" id="hhB-Ht-5ng"/>
+                                                <constraint firstItem="hCQ-aj-7xf" firstAttribute="leading" secondItem="Q78-pj-Tnt" secondAttribute="leadingMargin" id="qHz-bi-2E4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsView" destination="hCQ-aj-7xf" id="Qbb-Oa-wis"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yHE-r0-wVR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d4g-aU-C0p" secondAttribute="bottom" id="0hI-dM-uDo"/>
+                            <constraint firstItem="d4g-aU-C0p" firstAttribute="leading" secondItem="yHE-r0-wVR" secondAttribute="leading" id="WXt-l3-0ic"/>
+                            <constraint firstItem="d4g-aU-C0p" firstAttribute="trailing" secondItem="yHE-r0-wVR" secondAttribute="trailing" id="YcO-4i-6dv"/>
+                            <constraint firstItem="d4g-aU-C0p" firstAttribute="top" secondItem="yHE-r0-wVR" secondAttribute="top" id="oqv-7L-ea7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mex-fY-RyO"/>
+                    <connections>
+                        <outlet property="tableView" destination="d4g-aU-C0p" id="5ag-Yd-Wc4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOZ-Xy-FDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="88"/>
+            <point key="canvasLocation" x="1947.826086956522" y="87.723214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kkB-CW-GjG">

@@ -13,6 +13,7 @@ class SourceCollectionViewCell: UICollectionViewCell {
     @IBOutlet var label: UILabel!
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         self.round()
         self.addBorder(.black, 8, 0.5)
         setSelected(false)
