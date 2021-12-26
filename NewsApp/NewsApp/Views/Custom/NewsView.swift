@@ -43,12 +43,14 @@ class NewsView: UIView {
         didSet {
             if let article = article {
                 titleLabel.text = article.title
-                if let url = URL(string: article.urlToImage) {
+                if let urlToImage = article.urlToImage,
+                   let url = URL(string: urlToImage) {
                     imageView.sd_setImage(with: url, completed: nil)
                 }
                 dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 dateFormatterPrint.dateFormat = "HH:mm:ss"
-                if let date = dateFormatterGet.date(from: article.publishedAt) {
+                if let publishedAt = article.publishedAt,
+                    let date = dateFormatterGet.date(from: publishedAt) {
                     dateLabel.text = dateFormatterPrint.string(from: date)
                 }
             }
