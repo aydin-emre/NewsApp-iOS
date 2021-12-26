@@ -117,9 +117,9 @@ class SourcesViewController: BaseViewController {
             .modelSelected(Source.self)
             .subscribe(onNext: { [unowned self] model in
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                if let headlinesViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesPageViewController")
-                    as? HeadlinesPageViewController {
-//                    headlinesViewController.source = model
+                if let headlinesViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesViewController")
+                    as? HeadlinesViewController {
+                    headlinesViewController.source = model
                     self.navigationController?.pushViewController(headlinesViewController, animated: true)
                 }
 
