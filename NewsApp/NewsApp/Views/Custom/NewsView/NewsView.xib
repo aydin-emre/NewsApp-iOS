@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsView" customModule="NewsApp" customModuleProvider="target">
             <connections>
-                <outlet property="addRemoveReadingListButton" destination="MEg-mB-LvB" id="PLb-uq-BbI"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="Xdn-Oa-qRA"/>
-                <outlet property="dateLabel" destination="FJv-Gn-sID" id="slA-0z-W8Z"/>
-                <outlet property="imageView" destination="pOh-fr-jck" id="BSE-4j-BHB"/>
-                <outlet property="titleLabel" destination="yhT-Sh-3v2" id="Cwp-e4-gzc"/>
+                <outlet property="addRemoveReadingListButton" destination="MEg-mB-LvB" id="Jpw-oU-BlK"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="T69-Mb-wSP"/>
+                <outlet property="dateLabel" destination="FJv-Gn-sID" id="6q8-Yp-DVu"/>
+                <outlet property="imageView" destination="pOh-fr-jck" id="8Ig-tu-lOx"/>
+                <outlet property="titleLabel" destination="yhT-Sh-3v2" id="WZ9-gh-Zi2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,7 +32,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhT-Sh-3v2">
                     <rect key="frame" x="0.0" y="233" width="375" height="43"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="xz3-Gd-LE6"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="JxD-sm-6I2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
@@ -55,7 +55,7 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Okuma Listeme Ekle"/>
                     <connections>
-                        <action selector="addRemoveReadingListButton:" destination="-1" eventType="touchUpInside" id="Fal-a1-nYo"/>
+                        <action selector="addRemoveReadingListButton:" destination="-1" eventType="touchUpInside" id="Mcs-ed-Zvw"/>
                     </connections>
                 </button>
             </subviews>

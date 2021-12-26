@@ -24,15 +24,6 @@ class SourcesViewController: BaseViewController {
         // Do any additional setup after loading the view.
         setupBindings()
         sourcesViewModel.requestData()
-        
-//        print("-*-*-*-**-")
-//        print(Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)?.first == nil)
-//        print("---------")
-//        if let newsView = Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)?.first as? NewsView {
-//            newsView.backgroundColor = .red
-//            view.addSubview(newsView)
-//        }
-        
     }
 
     func setupBindings() {

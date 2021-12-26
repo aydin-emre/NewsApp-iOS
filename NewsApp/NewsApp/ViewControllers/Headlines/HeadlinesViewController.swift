@@ -41,6 +41,7 @@ class HeadlinesViewController: BaseViewController {
         // Sources TableView
         headlinesViewModel
             .articles
+            .map({ Array($0.suffix($0.count-3)) })
             .observe(on: MainScheduler.instance)
             .bind(to: tableView
                     .rx
@@ -48,12 +49,39 @@ class HeadlinesViewController: BaseViewController {
                 cell.configure(with: element)
             }
             .disposed(by: disposeBag)
+
+        headlinesViewModel
+            .articles
+            .map({ Array($0.prefix(3)) })
+            .subscribe(onNext: { articles in
+                self.setHeaderView(with: articles)
+            })
+            .disposed(by: disposeBag)
     }
 
-    func setHeaderView() {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 200))
-        headerView.backgroundColor = .red
-        tableView.tableHeaderView = headerView
+    func setHeaderView(with articles: [Article]) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let headlinesPageViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesPageViewController")
+            as? HeadlinesPageViewController {
+            headlinesPageViewController.articles = articles
+
+            let containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 380))
+
+            headlinesPageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            addChild(headlinesPageViewController)
+            containerView.addSubview(headlinesPageViewController.view)
+
+            NSLayoutConstraint.activate([
+                headlinesPageViewController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+                headlinesPageViewController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+                headlinesPageViewController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+                headlinesPageViewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+                ])
+
+            headlinesPageViewController.didMove(toParent: self)
+
+            tableView.tableHeaderView = containerView
+        }
     }
+
 }
-

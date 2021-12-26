@@ -13,8 +13,8 @@ class NewsView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var addRemoveReadingListButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var addRemoveReadingListButton: UIButton!
 
     @IBAction func addRemoveReadingListButton(_ sender: UIButton) {
         
@@ -31,7 +31,7 @@ class NewsView: UIView {
     }
 
     func commonInit() {
-        Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)
+        Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

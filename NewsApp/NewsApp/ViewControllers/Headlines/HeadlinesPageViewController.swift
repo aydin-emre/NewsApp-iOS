@@ -12,9 +12,11 @@ class HeadlinesPageViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
-    var slideViewWidth: CGFloat!
-    var slideViewHeight: CGFloat!
-    var slides: [UIView] = []
+    public var articles = [Article]()
+    private var slideViewWidth: CGFloat!
+    private var slideViewHeight: CGFloat!
+    private var slides = [UIView]()
+    let newsViewHeight: CGFloat = 350
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,33 +40,23 @@ class HeadlinesPageViewController: BaseViewController {
     }
 
     func createSlides() {
-//        if let newsView = Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)?.first as? NewsView {
-//            views.append(newsView)
-//            views.append(newsView)
-//        }
-        slides.append(NewsView.fromNib())
-
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 200))
-        headerView.backgroundColor = .red
-        
-        slides.append(headerView)
-//        for image in images {
-//            let tutorialView = Bundle.main.loadNibNamed("TutorialView", owner: self, options: nil)?.first as! TutorialView
-//            tutorialView.imageView.image = image
-//            views.append(tutorialView)
-//        }
+        for article in articles {
+            let newsView = NewsView(frame: CGRect(x: 0, y: 0, width: slideViewWidth, height: newsViewHeight))
+            newsView.article = article
+            slides.append(newsView)
+        }
     }
 
     func setupSlideScrollView(slides: [UIView]) {
-        scrollView.frame = CGRect(x: 0, y: 0, width: slideViewWidth, height: slideViewHeight)
-        scrollView.contentSize = CGSize(width: slideViewWidth * CGFloat(slides.count), height: slideViewHeight)
+        scrollView.frame = CGRect(x: 0, y: 0, width: slideViewWidth, height: newsViewHeight)
+        scrollView.contentSize = CGSize(width: slideViewWidth * CGFloat(slides.count), height: newsViewHeight)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
         scrollView.contentSize.height = 1.0
 
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: slideViewWidth * CGFloat(i), y: 0, width: slideViewWidth, height: slideViewHeight)
+            slides[i].frame = CGRect(x: slideViewWidth * CGFloat(i), y: 0, width: slideViewWidth, height: newsViewHeight)
             scrollView.addSubview(slides[i])
         }
     }
@@ -75,30 +67,9 @@ class HeadlinesPageViewController: BaseViewController {
 
 extension HeadlinesPageViewController: UIScrollViewDelegate {
 
-    /*
-     * default function called when view is scolled. In order to enable callback
-     * when scrollview is scrolled, the below code needs to be called:
-     * scrollView.delegate = self
-     */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = Int(round(scrollView.contentOffset.x/view.frame.width))
         pageControl.currentPage = pageIndex
     }
 
-}
-
-extension UIView {
-    class func fromNib(named: String? = nil) -> Self {
-        let name = named ?? "\(Self.self)"
-        guard
-            let nib = Bundle.main.loadNibNamed(name, owner: nil, options: nil)
-            else { fatalError("missing expected nib named: \(name)") }
-        guard
-            /// we're using `first` here because compact map chokes compiler on
-            /// optimized release, so you can't use two views in one nib if you wanted to
-            /// and are now looking at this
-            let view = nib.first as? Self
-            else { fatalError("view of type \(Self.self) not found in \(nib)") }
-        return view
-    }
 }
