@@ -127,6 +127,7 @@
                     <connections>
                         <outlet property="collectionView" destination="6iu-E5-R2a" id="Zlc-0g-mpj"/>
                         <outlet property="tableView" destination="LIW-ij-Bx1" id="iL8-1S-UYJ"/>
+                        <segue destination="sZX-DW-wzW" kind="show" id="CGh-en-J5m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -143,6 +144,7 @@
                         <viewLayoutGuide key="safeArea" id="yHE-r0-wVR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Mex-fY-RyO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOZ-Xy-FDf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

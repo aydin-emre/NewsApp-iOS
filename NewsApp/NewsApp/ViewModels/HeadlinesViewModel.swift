@@ -1,24 +1,24 @@
 //
-//  SourcesViewModel.swift
+//  HeadlinesViewModel.swift
 //  NewsApp
 //
-//  Created by Emre on 24.12.2021.
+//  Created by Emre on 26.12.2021.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-class SourcesViewModel {
+class HeadlinesViewModel {
 
-    public let sources: PublishSubject<[Source]> = PublishSubject()
+    public let articles: PublishSubject<[Article]> = PublishSubject()
     public let error: PublishSubject<NetworkError> = PublishSubject()
 
     public func requestData() {
-        NetworkManager.shared.sources { result in
+        NetworkManager.shared.topHeadlines { result in
             switch result {
             case .success(let response):
-                self.sources.onNext(response.sources)
+                self.articles.onNext(response.articles)
             case .failure(let error):
                 self.error.onNext(error)
             }
