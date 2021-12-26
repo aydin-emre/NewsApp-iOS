@@ -50,7 +50,7 @@ class NewsView: UIView {
                 dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 dateFormatterPrint.dateFormat = "HH:mm:ss"
                 if let publishedAt = article.publishedAt,
-                    let date = dateFormatterGet.date(from: publishedAt) {
+                   let date = dateFormatterGet.date(from: publishedAt.standardizeDates()) {
                     dateLabel.text = dateFormatterPrint.string(from: date)
                 }
             }

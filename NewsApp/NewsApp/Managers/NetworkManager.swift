@@ -110,7 +110,7 @@ public class NetworkManager {
 
             let viewLoading = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             viewLoading.center = CGPoint(x: window.bounds.width/2, y: window.bounds.height/2)
-            viewLoading.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1)
+            viewLoading.backgroundColor = appColor
             let aivLoading = UIActivityIndicatorView(frame: CGRect(x: 15, y: 15, width: 20, height: 20))
             if #available(iOS 13.0, *) {
                 aivLoading.style = .large

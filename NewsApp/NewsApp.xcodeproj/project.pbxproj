@@ -39,6 +39,7 @@
 		C3E31E4D2778734700AD79C6 /* NewsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E31E4C2778734700AD79C6 /* NewsView.xib */; };
 		C3E31E4F2778736000AD79C6 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E4E2778736000AD79C6 /* NewsView.swift */; };
 		C3E31E512778767A00AD79C6 /* HeadlinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E502778767A00AD79C6 /* HeadlinesTableViewCell.swift */; };
+		C3E31E532778884900AD79C6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E522778884900AD79C6 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		C3E31E4C2778734700AD79C6 /* NewsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsView.xib; sourceTree = "<group>"; };
 		C3E31E4E2778736000AD79C6 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		C3E31E502778767A00AD79C6 /* HeadlinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesTableViewCell.swift; sourceTree = "<group>"; };
+		C3E31E522778884900AD79C6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 			children = (
 				C3D15D5327771C3E00F71892 /* UIViewExtension.swift */,
 				C3D15D552777351100F71892 /* ReactiveExtension.swift */,
+				C3E31E522778884900AD79C6 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				C3E31E4A277866D000AD79C6 /* HeadlinesViewModel.swift in Sources */,
 				C3D15D3627764AFE00F71892 /* SourcesResponse.swift in Sources */,
 				C3D15D3A27764B1300F71892 /* Category.swift in Sources */,
+				C3E31E532778884900AD79C6 /* StringExtension.swift in Sources */,
 				C3E31E482778668400AD79C6 /* HeadlinesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
