@@ -24,6 +24,15 @@ class SourcesViewController: BaseViewController {
         // Do any additional setup after loading the view.
         setupBindings()
         sourcesViewModel.requestData()
+        
+//        print("-*-*-*-**-")
+//        print(Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)?.first == nil)
+//        print("---------")
+//        if let newsView = Bundle.main.loadNibNamed("NewsView", owner: self, options: nil)?.first as? NewsView {
+//            newsView.backgroundColor = .red
+//            view.addSubview(newsView)
+//        }
+        
     }
 
     func setupBindings() {
@@ -32,7 +41,7 @@ class SourcesViewController: BaseViewController {
             .error
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { error in
-                self.alert.setMessage(error.localizedDescription)
+                self.alert.setMessage(error)
                 self.alert.show()
             })
             .disposed(by: disposeBag)
@@ -108,9 +117,9 @@ class SourcesViewController: BaseViewController {
             .modelSelected(Source.self)
             .subscribe(onNext: { [unowned self] model in
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                if let headlinesViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesViewController")
-                    as? HeadlinesViewController {
-                    headlinesViewController.source = model
+                if let headlinesViewController = storyBoard.instantiateViewController(withIdentifier: "HeadlinesPageViewController")
+                    as? HeadlinesPageViewController {
+//                    headlinesViewController.source = model
                     self.navigationController?.pushViewController(headlinesViewController, animated: true)
                 }
 

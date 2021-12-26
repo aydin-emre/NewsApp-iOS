@@ -12,7 +12,7 @@ import RxCocoa
 class HeadlinesViewModel {
 
     public let articles: PublishSubject<[Article]> = PublishSubject()
-    public let error: PublishSubject<NetworkError> = PublishSubject()
+    public let error: PublishSubject<String> = PublishSubject()
 
     public func requestData(with sourceId: String) {
         let parameters = ["sources": sourceId]
@@ -21,7 +21,7 @@ class HeadlinesViewModel {
             case .success(let response):
                 self.articles.onNext(response.articles)
             case .failure(let error):
-                self.error.onNext(error)
+                self.error.onNext(error.localizedDescription)
             }
         }
     }

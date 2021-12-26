@@ -40,6 +40,7 @@
 		C3E31E4F2778736000AD79C6 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E4E2778736000AD79C6 /* NewsView.swift */; };
 		C3E31E512778767A00AD79C6 /* HeadlinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E502778767A00AD79C6 /* HeadlinesTableViewCell.swift */; };
 		C3E31E532778884900AD79C6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E522778884900AD79C6 /* StringExtension.swift */; };
+		C3E31E592778BCB800AD79C6 /* HeadlinesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E31E582778BCB800AD79C6 /* HeadlinesPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		C3E31E4E2778736000AD79C6 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		C3E31E502778767A00AD79C6 /* HeadlinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesTableViewCell.swift; sourceTree = "<group>"; };
 		C3E31E522778884900AD79C6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C3E31E582778BCB800AD79C6 /* HeadlinesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlinesPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				C3E31E472778668400AD79C6 /* HeadlinesViewController.swift */,
+				C3E31E582778BCB800AD79C6 /* HeadlinesPageViewController.swift */,
 			);
 			path = Headlines;
 			sourceTree = "<group>";
@@ -334,10 +337,18 @@
 		C3E31E4B2778733900AD79C6 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				C3E31E542778BBD600AD79C6 /* NewsView */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		C3E31E542778BBD600AD79C6 /* NewsView */ = {
+			isa = PBXGroup;
+			children = (
 				C3E31E4E2778736000AD79C6 /* NewsView.swift */,
 				C3E31E4C2778734700AD79C6 /* NewsView.xib */,
 			);
-			path = Custom;
+			path = NewsView;
 			sourceTree = "<group>";
 		};
 		CC93C2E7F312B6AFF5EA8324 /* Frameworks */ = {
@@ -616,6 +627,7 @@
 				C3D15D562777351100F71892 /* ReactiveExtension.swift in Sources */,
 				C3D15D47277655C200F71892 /* Constants.swift in Sources */,
 				C3D15D4D2776607F00F71892 /* SourceTableViewCell.swift in Sources */,
+				C3E31E592778BCB800AD79C6 /* HeadlinesPageViewController.swift in Sources */,
 				C3D15D412776532D00F71892 /* SourcesViewController.swift in Sources */,
 				C3D15D3427764AE800F71892 /* NetworkError.swift in Sources */,
 				C3D15D3827764B0900F71892 /* Source.swift in Sources */,

@@ -33,7 +33,7 @@ class HeadlinesViewController: BaseViewController {
             .error
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { error in
-                self.alert.setMessage(error.localizedDescription)
+                self.alert.setMessage(error)
                 self.alert.show()
             })
             .disposed(by: disposeBag)
@@ -50,4 +50,10 @@ class HeadlinesViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 
+    func setHeaderView() {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 500, height: 200))
+        headerView.backgroundColor = .red
+        tableView.tableHeaderView = headerView
+    }
 }
+

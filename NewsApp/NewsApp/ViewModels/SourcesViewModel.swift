@@ -12,15 +12,19 @@ import RxCocoa
 class SourcesViewModel {
 
     public let sources: PublishSubject<[Source]> = PublishSubject()
-    public let error: PublishSubject<NetworkError> = PublishSubject()
+    public let error: PublishSubject<String> = PublishSubject()
 
     public func requestData() {
         NetworkManager.shared.sources { result in
             switch result {
             case .success(let response):
-                self.sources.onNext(response.sources)
+                if let sources = response.sources {
+                    self.sources.onNext(sources)
+                } else if let message = response.message {
+                    self.error.onNext(message)
+                }
             case .failure(let error):
-                self.error.onNext(error)
+                self.error.onNext(error.localizedDescription)
             }
         }
     }

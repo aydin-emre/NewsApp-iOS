@@ -9,7 +9,9 @@ import Foundation
 
 struct SourcesResponse: Codable {
 
-    let status: String
-    let sources: [Source]
+    let status: String?
+    let sources: [Source]?
+    let code: String?
+    let message: String?
 
 }

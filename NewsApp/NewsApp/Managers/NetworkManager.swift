@@ -44,7 +44,7 @@ public class NetworkManager {
         }
 
         var inlineParameters: Parameters = [:]
-        inlineParameters["apiKey"] = "7162e5c4fe814a5eaa39a646923db245"
+        inlineParameters["apiKey"] = "85da84491df44cb6ac97b21af6b829d4"
 
         if let parameters = parameters {
             for key in parameters.keys {
