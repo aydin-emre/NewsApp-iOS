@@ -9,10 +9,13 @@ import Foundation
 
 struct Source: Codable {
 
-    let id, name, sourceDescription: String
+    let id: String
+    let name: String
+    let sourceDescription: String
     let url: String
     var category: Category
-    let language, country: String
+    let language: String
+    let country: String
 
     enum CodingKeys: String, CodingKey {
         case id, name

@@ -12,6 +12,7 @@ import EAAlert
 private let baseURL: String = "https://newsapi.org/v2/"
 
 private let sourcesPath = "sources/"
+private let topHeadlinesPath = "top-headlines"
 
 public class NetworkManager {
 
@@ -29,7 +30,7 @@ public class NetworkManager {
                 window.addSubview(viewLoading)
             }
 
-            eaAlert = EAAlert(message: "please_check_your_internet_connection")
+            eaAlert = EAAlert(message: "Please check your internet connection!")
         }
 
         var inlineHeaders: HTTPHeaders = [:]
@@ -85,6 +86,16 @@ public class NetworkManager {
         let parameters = ["language": "en"]
         request(of: SourcesResponse.self, forPath: sourcesPath, method: .get, parameters: parameters, showLoadingView: true) { response in
             if let response = response as? SourcesResponse {
+                completion(.success(response))
+            } else {
+                completion(.failure(NetworkError.objectParseError))
+            }
+        }
+    }
+
+    func topHeadlines(completion: @escaping (Result<TopHeadlinesResponse, NetworkError>) -> Void) {
+        request(of: TopHeadlinesResponse.self, forPath: topHeadlinesPath, method: .get, showLoadingView: true) { response in
+            if let response = response as? TopHeadlinesResponse {
                 completion(.success(response))
             } else {
                 completion(.failure(NetworkError.objectParseError))
