@@ -56,7 +56,7 @@ class HeadlinesPageViewController: BaseViewController {
         scrollView.contentSize.height = 1.0
 
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: slideViewWidth * CGFloat(i), y: 0, width: slideViewWidth, height: newsViewHeight)
+            slides[i].frame = CGRect(x: (slideViewWidth * CGFloat(i)) + 20, y: 0, width: slideViewWidth - 40, height: newsViewHeight)
             scrollView.addSubview(slides[i])
         }
     }
