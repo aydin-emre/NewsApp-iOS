@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Article: Codable {
+class Article: Object, Codable {
 
-    let source: Source?
-    let author: String?
-    let title: String?
-    let articleDescription: String?
-    let url: String?
-    let urlToImage: String?
-    let publishedAt: String?
-    let content: String?
+    @objc dynamic var source: Source?
+    @objc dynamic var author: String?
+    @objc dynamic var title: String!
+    @objc dynamic var articleDescription: String?
+    @objc dynamic var url: String?
+    @objc dynamic var urlToImage: String?
+    @objc dynamic var publishedAt: String?
+    @objc dynamic var content: String?
 
     enum CodingKeys: String, CodingKey {
         case source, author, title

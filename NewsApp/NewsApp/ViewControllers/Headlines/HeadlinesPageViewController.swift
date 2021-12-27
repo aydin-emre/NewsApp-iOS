@@ -17,6 +17,8 @@ class HeadlinesPageViewController: BaseViewController {
     private var slideViewHeight: CGFloat!
     private var slides = [UIView]()
     let newsViewHeight: CGFloat = 350
+    var timer: Timer?
+    var currentPage = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,18 @@ class HeadlinesPageViewController: BaseViewController {
         scrollView.delegate = self
 
         setupViews()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updatePager), userInfo: nil, repeats: true)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer?.invalidate()
+        timer = nil
     }
 
     func setupViews() {
@@ -59,6 +73,14 @@ class HeadlinesPageViewController: BaseViewController {
             slides[i].frame = CGRect(x: (slideViewWidth * CGFloat(i)) + 20, y: 0, width: slideViewWidth - 40, height: newsViewHeight)
             scrollView.addSubview(slides[i])
         }
+    }
+
+    @objc func updatePager() {
+        (currentPage == slides.count - 1) ? (currentPage = 0) : (currentPage += 1)
+        var frame = scrollView.frame
+        frame.origin.x = frame.size.width * CGFloat(currentPage)
+        scrollView.scrollRectToVisible(frame, animated: true)
+        pageControl.currentPage = currentPage
     }
 
 }

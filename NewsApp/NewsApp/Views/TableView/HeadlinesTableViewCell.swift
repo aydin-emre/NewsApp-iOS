@@ -15,4 +15,8 @@ class HeadlinesTableViewCell: UITableViewCell {
         newsView.article = article
     }
 
+    func checkArticles() {
+        newsView.checkArticles()
+    }
+
 }

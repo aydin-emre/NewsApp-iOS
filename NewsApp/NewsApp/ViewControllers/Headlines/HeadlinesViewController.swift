@@ -50,6 +50,14 @@ class HeadlinesViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
 
+        tableView
+            .rx
+            .willDisplayCell
+            .subscribe(onNext: ({ cell, _ in
+                (cell as? HeadlinesTableViewCell)?.checkArticles()
+            })).disposed(by: disposeBag)
+
+        // TableView HeaderView
         headlinesViewModel
             .articles
             .map({ Array($0.prefix(3)) })

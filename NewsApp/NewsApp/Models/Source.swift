@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Source: Codable {
+class Source: Object, Codable {
 
-    let id: String?
-    let name: String?
-    let sourceDescription: String?
-    let url: String?
-    var category: Category?
-    let language: String?
-    let country: String?
+    @objc dynamic var id: String?
+    @objc dynamic var name: String?
+    @objc dynamic var sourceDescription: String?
+    @objc dynamic var url: String?
+    dynamic var category: Category?
+    @objc dynamic var language: String?
+    @objc dynamic var country: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name

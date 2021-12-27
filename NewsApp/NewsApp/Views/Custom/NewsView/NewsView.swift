@@ -7,17 +7,19 @@
 
 import UIKit
 import SDWebImage
+import RealmSwift
 
 class NewsView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addRemoveReadingListButton: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
 
     @IBAction func addRemoveReadingListButton(_ sender: UIButton) {
-        
+        isNewsInList ? removeArticle() : saveArticle()
+        isNewsInList = !isNewsInList
     }
 
     override init(frame: CGRect) {
@@ -52,6 +54,65 @@ class NewsView: UIView {
                 if let publishedAt = article.publishedAt,
                    let date = dateFormatterGet.date(from: publishedAt.standardizeDates()) {
                     dateLabel.text = dateFormatterPrint.string(from: date)
+                }
+
+                checkArticles()
+            }
+        }
+    }
+
+    public var isNewsInList: Bool = false {
+        didSet {
+            addRemoveReadingListButton.setTitle(isNewsInList ? "Okuma Listemden Kaldır" : "Okuma Listeme Ekle", for: .normal)
+        }
+    }
+
+    func saveArticle() {
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                do {
+                    if let realm = try? Realm(),
+                       let article = self.article {
+                        try? realm.write {
+                            realm.add(article)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func removeArticle() {
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                do {
+                    if let realm = try? Realm(),
+                       let article = self.article {
+                        if let articleToDelete = realm.objects(Article.self).filter({ $0.title == article.title }).first {
+                            try? realm.write {
+                                realm.delete(articleToDelete)
+                            }
+                            DispatchQueue.main.async {
+                                self.isNewsInList = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func checkArticles() {
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                do {
+                    if let realm = try? Realm(),
+                       let article = self.article {
+                        let isNewsInList = !realm.objects(Article.self).filter({ $0.title == article.title }).isEmpty
+                        DispatchQueue.main.async {
+                            self.isNewsInList = isNewsInList
+                        }
+                    }
                 }
             }
         }
