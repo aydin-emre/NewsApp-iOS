@@ -18,16 +18,45 @@ class NewsAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGetSources() throws {
+        let expectation = expectation(description: "Service Call")
+
+        NetworkManager.shared.sources { result in
+            switch result {
+            case .success(let response):
+                if response.sources != nil {
+                    XCTAssert(true)
+                } else {
+                    XCTFail("No source found!", file: #filePath, line: #line)
+                }
+            case .failure(let error):
+                XCTFail(error.localizedDescription, file: #filePath, line: #line)
+            }
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetTopHeadlines() throws {
+        let expectation = expectation(description: "Service Call")
+
+        let parameters = ["sources": "bbc-news"]
+        NetworkManager.shared.topHeadlines(with: parameters) { result in
+            switch result {
+            case .success(let response):
+                if !response.articles.isEmpty {
+                    XCTAssert(true)
+                } else {
+                    XCTFail("No article found!", file: #filePath, line: #line)
+                }
+            case .failure(let error):
+                XCTFail(error.localizedDescription, file: #filePath, line: #line)
+            }
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 
 }
