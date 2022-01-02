@@ -15,7 +15,7 @@ class SourceCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.round()
-        self.addBorder(.black, 8, 0.5)
+        self.addBorder(color: .black, radius: 8, borderWidth: 0.5)
         setSelected(false)
     }
 

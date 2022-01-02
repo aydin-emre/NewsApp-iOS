@@ -102,7 +102,7 @@ class SourcesViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
 
-        // Categories CollectionView Selections
+        // Sources TableView Click Item
         tableView
             .rx
             .modelSelected(Source.self)

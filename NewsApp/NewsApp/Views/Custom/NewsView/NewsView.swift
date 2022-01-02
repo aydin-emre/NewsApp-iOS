@@ -68,34 +68,23 @@ class NewsView: UIView {
     }
 
     func saveArticle() {
-        DispatchQueue.global(qos: .background).async {
-            autoreleasepool {
-                do {
-                    if let realm = try? Realm(),
-                       let article = self.article {
-                        try? realm.write {
-                            realm.add(article)
-                        }
-                    }
+        do {
+            if let realm = try? Realm(),
+               let article = self.article {
+                try? realm.write {
+                    realm.add(article)
                 }
             }
         }
     }
 
     func removeArticle() {
-        DispatchQueue.global(qos: .background).async {
-            autoreleasepool {
-                do {
-                    if let realm = try? Realm(),
-                       let article = self.article {
-                        if let articleToDelete = realm.objects(Article.self).filter({ $0.title == article.title }).first {
-                            try? realm.write {
-                                realm.delete(articleToDelete)
-                            }
-                            DispatchQueue.main.async {
-                                self.isNewsInList = false
-                            }
-                        }
+        do {
+            if let realm = try? Realm(),
+               let article = self.article {
+                if let articleToDelete = realm.objects(Article.self).filter({ $0.title == article.title }).first {
+                    try? realm.write {
+                        realm.delete(articleToDelete)
                     }
                 }
             }
@@ -103,16 +92,12 @@ class NewsView: UIView {
     }
 
     func checkArticles() {
-        DispatchQueue.global(qos: .background).async {
-            autoreleasepool {
-                do {
-                    if let realm = try? Realm(),
-                       let article = self.article {
-                        let isNewsInList = !realm.objects(Article.self).filter({ $0.title == article.title }).isEmpty
-                        DispatchQueue.main.async {
-                            self.isNewsInList = isNewsInList
-                        }
-                    }
+        do {
+            if let realm = try? Realm(),
+               let article = self.article {
+                let isNewsInList = !realm.objects(Article.self).filter({ $0.title == article.title }).isEmpty
+                DispatchQueue.main.async {
+                    self.isNewsInList = isNewsInList
                 }
             }
         }

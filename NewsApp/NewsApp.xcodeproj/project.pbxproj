@@ -318,9 +318,9 @@
 		C3D15D5227771C2D00F71892 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C3D15D5327771C3E00F71892 /* UIViewExtension.swift */,
 				C3D15D552777351100F71892 /* ReactiveExtension.swift */,
 				C3E31E522778884900AD79C6 /* StringExtension.swift */,
+				C3D15D5327771C3E00F71892 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
