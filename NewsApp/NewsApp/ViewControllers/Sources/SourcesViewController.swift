@@ -14,7 +14,7 @@ class SourcesViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
 
-    var sourcesViewModel = SourcesViewModel()
+    let sourcesViewModel = SourcesViewModel()
     let disposeBag = DisposeBag()
     var selectedCategories = [Category]()
 
@@ -38,7 +38,8 @@ class SourcesViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         // Categories CollectionView
-        Observable.from(optional: Category.allCases)
+        Observable
+            .from(optional: Category.allCases)
             .asObservable()
             .bind(to: collectionView
                     .rx
@@ -47,7 +48,9 @@ class SourcesViewController: BaseViewController {
             }.disposed(by: disposeBag)
 
         var allSources = [Source]()
-        sourcesViewModel.sources.subscribe(onNext: { sources in
+        sourcesViewModel
+            .sources
+            .subscribe(onNext: { sources in
             allSources = sources
           }).disposed(by: disposeBag)
 
